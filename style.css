@@ -1,0 +1,116 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 110%;
+    color: aliceblue;
+    
+    background: grey;
+    background-image: url('https://source.unsplash.com/random/1600×900/?Split');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.card{
+    background: rgba(0,0,0,0.5);
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1em;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    margin: 0.5em;
+    border-radius: 50%;
+    border: whitesmoke;
+    background: rgba(0,0,0,0.5);
+    color: aliceblue;
+    height: 3em;
+    width: 3em;
+    outline: none;
+}
+
+button:hover{
+    color: black;
+    background-color: aliceblue;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.search-bar{
+    border: none;
+    height: 1em;
+    width: 100%;
+    outline: none;
+    padding: 0.7em;
+    border-radius: 5em;
+    background: rgba(0,0,0,0.5);
+    color: whitesmoke;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+h1.temp{
+    margin-bottom: 1em;
+}
+
+.description{
+    text-transform: capitalize;
+}
+
+.icon_description{
+    display: flex;
+    align-items: center;
+    position: relative;
+    float: right;
+}
+
+.icon{
+    height: 4em;
+    width: 4em;
+}
+
+.humidity{
+    margin-bottom: 0.5em;
+}
+
+.weather.loading{
+    visibility: hidden;
+}
+.weather.loading::after{
+    visibility: visible;
+    content: "Loading";
+}
+
+.details{
+    margin-top: 2em;
+    background: rgba(0,0,0,0);
+    margin-left: 43%;
+    margin-bottom: 0;
+}
+
+.details_block{
+    display: block;
+    visibility: hidden;
+}
+.feels_like{
+    margin-bottom: 0.5em;
+}
+.temp_min{
+    margin-bottom: 0.5em;
+}
+.temp_max{
+    margin-bottom: 0.5em;
+}
