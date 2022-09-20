@@ -20,25 +20,30 @@ let weather = {
         .then((data) => this.displayWeather(data));
     },
 
+    unknownWeather: function(){
+        //ako je nepostojeci grad ne moze se uc u details
+        document.querySelector(".details").style.visibility = "hidden";
+        document.querySelector(".card").style.height = "200px";
+
+        document.querySelector(".city").innerHTML = "City not found.";
+        document.querySelector(".icon").src = "https://img.icons8.com/stickers/344/error-cloud.png"; 
+        document.querySelector(".description").innerHTML = "";
+        document.querySelector(".temp").innerHTML = "";
+        document.querySelector(".humidity").innerHTML = "";
+        document.querySelector(".wind").innerHTML = "";
+        
+        document.body.style.backgroundImage = "url(https://source.unsplash.com/random/1600×900/?landcsape)";
+
+        document.querySelector(".weather").classList.remove("loading");//kad se ucita mice se invisibility, html ima 2 klase: weather i loading
+    },
+
     displayWeather: function(data){
         const {cod} = data;
         console.log(cod)
         if(cod === "404")
         {
             //ako je nepostojeci grad ne moze se uc u details
-            document.querySelector(".details").style.visibility = "hidden";
-            document.querySelector(".card").style.height = "200px";
-
-            document.querySelector(".city").innerHTML = "City not found.";
-            document.querySelector(".icon").src = "https://img.icons8.com/stickers/344/error-cloud.png"; 
-            document.querySelector(".description").innerHTML = "";
-            document.querySelector(".temp").innerHTML = "";
-            document.querySelector(".humidity").innerHTML = "";
-            document.querySelector(".wind").innerHTML = "";
-            
-            document.body.style.backgroundImage = "url(https://source.unsplash.com/random/1600×900/?landcsape)";
-
-            document.querySelector(".weather").classList.remove("loading");//kad se ucita mice se invisibility, html ima 2 klase: weather i loading
+            this.unknownWeather();
         }
         else
         {
@@ -78,12 +83,20 @@ let weather = {
     },
 
     search : function(){
-        this.fetchWeather(document.querySelector(".search-bar").value);
-
         //ako su otvoreni details pa se searcha da ce automatski zatvore
         document.querySelector(".details_block").style.visibility = "hidden";
         document.querySelector(".card").style.height = "300px";
         status = 0;
+
+        //ako nije nista napisano u search-bar
+        if(document.querySelector(".search-bar").value == ""){
+            this.unknownWeather();
+        }
+
+        else{
+        this.fetchWeather(document.querySelector(".search-bar").value);
+        }
+
     },
 
     open_details : function(){//status=0 oznacava da su details zatvoreni, a status=1 da su otvoreni
