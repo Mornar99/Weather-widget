@@ -6,7 +6,7 @@ let status = 0;
 
 //objekt
 let weather = {
-    apiKey: "427ede6faec8e5381fd3dce8965d6d07",
+    apiKey: "API_KEY_HERE",
     
     fetchWeather: function(city){
         fetch(
